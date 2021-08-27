@@ -27,8 +27,8 @@ export default {
 
 .grid-container {
   display: grid;
-  grid-template-columns: auto auto auto;
-  grid-gap: 1rem 1rem;
-  grid-template-rows: auto auto auto;
+  grid-template-columns: 10rem 10rem 10rem;
+  grid-template-rows: 10rem 10rem 10rem;
+  grid-column-gap: 3rem;
 }
 </style>
