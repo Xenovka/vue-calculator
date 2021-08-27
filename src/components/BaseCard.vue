@@ -1,0 +1,34 @@
+<template>
+  <div class="card-container grid-container bg-dark">
+    <the-button v-for="n in 3" :key="n" :value="n"></the-button>
+  </div>
+</template>
+
+<script>
+import TheButton from "./TheButton.vue";
+
+export default {
+  components: {
+    TheButton
+  }
+};
+</script>
+
+<style scoped>
+.card-container {
+  width: 45rem;
+  height: 40rem;
+  border-radius: 10px;
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 1rem 1rem;
+  grid-template-rows: auto auto auto;
+}
+</style>
