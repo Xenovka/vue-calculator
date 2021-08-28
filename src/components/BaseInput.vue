@@ -5,7 +5,7 @@
 <style scoped>
 .calc-input {
   width: 45rem;
-  height: 13rem;
+  height: 12rem;
   border-radius: 10px;
   padding: 3rem;
   position: absolute;

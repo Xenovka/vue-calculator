@@ -1,6 +1,6 @@
 <template>
   <div class="card-container grid-container bg-dark">
-    <the-button v-for="n in 3" :key="n" :value="n"></the-button>
+    <the-button v-for="n in 9" :key="n" :value="n"></the-button>
   </div>
 </template>
 
@@ -23,12 +23,13 @@ export default {
   top: 65%;
   left: 50%;
   transform: translate(-50%, -50%);
+  padding: 2rem;
 }
 
 .grid-container {
   display: grid;
-  grid-template-columns: 10rem 10rem 10rem;
-  grid-template-rows: 10rem 10rem 10rem;
-  grid-column-gap: 3rem;
+  grid-template-columns: 10rem 10rem 10rem 10rem;
+  grid-template-rows: 7rem 7rem 7rem 7rem 7rem;
+  grid-column-gap: 1rem;
 }
 </style>
