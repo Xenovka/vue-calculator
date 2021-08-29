@@ -1,5 +1,5 @@
 <template>
-  <button class="btn btn-light" :class="btnClass">{{ value }}</button>
+  <button class="btn" :class="btnClass">{{ buttonValue }}</button>
 </template>
 
 <script>
@@ -12,7 +12,43 @@ export default {
   },
   computed: {
     btnClass() {
-      return "btn-" + this.btnItem;
+      if (
+        this.value !== "equal" &&
+        this.value !== "delete" &&
+        this.value !== "reset"
+      ) {
+        return `btn-${this.btnItem} btn-light`;
+      } else if (this.value === "equal") {
+        return `btn-${this.btnItem} btn-red`;
+      } else {
+        return `btn-${this.btnItem} btn-dark`;
+      }
+    },
+    buttonValue() {
+      if (typeof this.value === "number") {
+        return this.value;
+      }
+
+      switch (this.value) {
+        case "equal":
+          return "=";
+        case "comma":
+          return ".";
+        case "plus":
+          return "+";
+        case "minus":
+          return "-";
+        case "times":
+          return "x";
+        case "divided":
+          return "/";
+        case "delete":
+          return "DEL";
+        case "reset":
+          return "RESET";
+        default:
+          return null;
+      }
     }
   }
 };
@@ -45,6 +81,13 @@ export default {
   box-shadow: 0 0.3rem hsl(6, 70%, 34%);
 }
 
+.btn-equal,
+.btn-reset,
+.btn-delete {
+  font-size: 1.5rem;
+  color: white;
+}
+
 .btn-1,
 .btn-2,
 .btn-3 {
@@ -61,8 +104,48 @@ export default {
 
 .btn-7,
 .btn-8,
-.btn-9 {
+.btn-9,
+.btn-delete {
   grid-row-start: 1;
   grid-row-end: 2;
+}
+
+.btn-0,
+.btn-comma,
+.btn-divided {
+  grid-row-start: 4;
+  grid-row-end: 5;
+}
+
+.btn-reset,
+.btn-equal {
+  grid-row-start: 5;
+  grid-row-end: 6;
+}
+
+.btn-0 {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.btn-delete,
+.btn-plus,
+.btn-minus,
+.btn-times {
+  grid-column-start: 4;
+  grid-column-end: 5;
+}
+
+.btn-reset {
+  grid-column: 1 / span 2;
+}
+
+.btn-equal {
+  grid-column: 3 / span 2;
+}
+
+.btn-reset,
+.btn-equal {
+  width: 100%;
 }
 </style>

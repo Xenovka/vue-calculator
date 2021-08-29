@@ -1,6 +1,11 @@
 <template>
   <div class="card-container grid-container bg-dark">
-    <the-button v-for="n in 9" :key="n" :value="n"></the-button>
+    <the-button v-for="n in 10" :key="n" :value="n - 1"></the-button>
+    <the-button
+      v-for="operator in operators"
+      :key="operator"
+      :value="operator"
+    ></the-button>
   </div>
 </template>
 
@@ -8,6 +13,20 @@
 import TheButton from "./TheButton.vue";
 
 export default {
+  data() {
+    return {
+      operators: [
+        "equal",
+        "comma",
+        "plus",
+        "minus",
+        "times",
+        "divided",
+        "delete",
+        "reset"
+      ]
+    };
+  },
   components: {
     TheButton
   }
@@ -28,8 +47,9 @@ export default {
 
 .grid-container {
   display: grid;
-  grid-template-columns: 10rem 10rem 10rem 10rem;
-  grid-template-rows: 7rem 7rem 7rem 7rem 7rem;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto auto auto auto auto;
   grid-column-gap: 1rem;
+  justify-content: space-evenly;
 }
 </style>
