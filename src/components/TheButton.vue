@@ -19,14 +19,19 @@ export default {
   },
   methods: {
     getValueFromButton(event) {
-      const getInputDOM = document.querySelector("input");
+      const inputElement = document.querySelector("input");
 
-      getInputDOM.value += !isNaN(event.target.value) ? event.target.value : "";
+      inputElement.value += !isNaN(event.target.value)
+        ? event.target.value
+        : "";
 
       if (event.target.value === "reset") {
-        getInputDOM.value = "";
-      } else if (event.target.value === "comma") {
-        getInputDOM.value += ".";
+        inputElement.value = "";
+      } else if (event.target.value === "delete") {
+        inputElement.value = inputElement.value.slice(
+          0,
+          inputElement.value.length - 1
+        );
       }
     }
   },
