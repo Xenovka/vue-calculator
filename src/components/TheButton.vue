@@ -20,14 +20,13 @@ export default {
   methods: {
     getValueFromButton(event) {
       const inputElement = document.querySelector("input");
+      const buttonValue = event.target.value;
 
-      inputElement.value += !isNaN(event.target.value)
-        ? event.target.value
-        : "";
+      inputElement.value += !isNaN(buttonValue) ? buttonValue : "";
 
-      if (event.target.value === "reset") {
+      if (buttonValue === "reset") {
         inputElement.value = "";
-      } else if (event.target.value === "delete") {
+      } else if (buttonValue === "delete") {
         inputElement.value = inputElement.value.slice(
           0,
           inputElement.value.length - 1
@@ -57,16 +56,16 @@ export default {
       switch (this.value) {
         case "equal":
           return "=";
-        case "comma":
-          return ".";
+        case "mod":
+          return "%";
         case "plus":
           return "+";
         case "minus":
           return "-";
         case "times":
-          return "x";
+          return "×";
         case "divided":
-          return "/";
+          return "÷";
         case "delete":
           return "DEL";
         case "reset":

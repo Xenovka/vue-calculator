@@ -17,7 +17,7 @@ export default {
     return {
       operators: [
         "equal",
-        "comma",
+        "mod",
         "plus",
         "minus",
         "times",
