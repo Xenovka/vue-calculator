@@ -14,12 +14,14 @@ export default {
   props: ["value"],
   data() {
     return {
-      btnItem: this.value
+      btnItem: this.value,
+      valueToCalculate: [],
+      operationLists: []
     };
   },
   methods: {
     getValueFromButton(event) {
-      const inputElement = document.querySelector("input");
+      const inputElement = document.getElementById("the-input");
       const buttonValue = event.target.value;
 
       inputElement.value += !isNaN(buttonValue) ? buttonValue : "";
@@ -31,6 +33,16 @@ export default {
           0,
           inputElement.value.length - 1
         );
+      } else if (
+        buttonValue === "plus" ||
+        buttonValue === "minus" ||
+        buttonValue === "times" ||
+        buttonValue === "divided" ||
+        buttonValue === "mod"
+      ) {
+        this.valueToCalculate.push(+inputElement.value);
+        this.operationLists.push(buttonValue);
+        inputElement.value = "";
       }
     }
   },
