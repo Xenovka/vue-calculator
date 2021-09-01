@@ -1,6 +1,6 @@
 <template>
   <button
-    @click="getValueFromButton"
+    @click="doSomethingWhenButtonClicked"
     class="btn"
     :class="btnClass"
     :value="value"
@@ -14,13 +14,11 @@ export default {
   props: ["value"],
   data() {
     return {
-      btnItem: this.value,
-      valueToCalculate: [],
-      operationLists: []
+      btnItem: this.value
     };
   },
   methods: {
-    getValueFromButton(event) {
+    doSomethingWhenButtonClicked(event) {
       const inputElement = document.getElementById("the-input");
       const buttonValue = event.target.value;
 
@@ -40,9 +38,35 @@ export default {
         buttonValue === "divided" ||
         buttonValue === "mod"
       ) {
-        this.valueToCalculate.push(+inputElement.value);
-        this.operationLists.push(buttonValue);
+        localStorage.setItem("firstVal", inputElement.value);
+        localStorage.setItem("operator", buttonValue);
         inputElement.value = "";
+      } else if (buttonValue === "equal") {
+        const firstVal = +localStorage.getItem("firstVal");
+        const secondVal = +inputElement.value;
+        const getOperator = localStorage.getItem("operator");
+        let calcResult;
+
+        switch (getOperator) {
+          case "plus":
+            calcResult = firstVal + secondVal;
+            break;
+          case "minus":
+            calcResult = firstVal - secondVal;
+            break;
+          case "times":
+            calcResult = firstVal * secondVal;
+            break;
+          case "divided":
+            calcResult = firstVal / secondVal;
+            break;
+          case "mod":
+            calcResult = firstVal % secondVal;
+            break;
+        }
+
+        inputElement.value = calcResult.toString();
+        localStorage.clear();
       }
     }
   },
